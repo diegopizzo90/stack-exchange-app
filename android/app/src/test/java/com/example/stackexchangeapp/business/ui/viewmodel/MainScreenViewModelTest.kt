@@ -58,7 +58,7 @@ class MainScreenViewModelTest {
     }
 
     @Test
-    fun getUsersByName_error_successfulViewStateTriggered() {
+    fun getUsersByName_error_errorViewStateTriggered() {
         //arrange
         `when`(interactor.getUsersByName(name = "user")).thenReturn(Single.error(Throwable()))
         //act
@@ -70,7 +70,7 @@ class MainScreenViewModelTest {
     }
 
     @Test
-    fun getUsersByName_emptyResult_successfulViewStateTriggered() {
+    fun getUsersByName_emptyResult_emptyViewStateTriggered() {
         //arrange
         `when`(interactor.getUsersByName(name = "user")).thenReturn(Single.just(listOf()))
         //act
