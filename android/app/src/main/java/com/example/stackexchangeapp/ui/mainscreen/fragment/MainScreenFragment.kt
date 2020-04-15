@@ -16,7 +16,6 @@ import com.example.stackexchangeapp.ui.mainscreen.viewmodel.MainScreenViewModel
 import kotlinx.android.synthetic.main.fragment_main_screen.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class MainScreenFragment : Fragment() {
 
     private val viewModel: MainScreenViewModel by viewModel()
@@ -43,15 +42,6 @@ class MainScreenFragment : Fragment() {
         viewModel.mainScreenState.observe(viewLifecycleOwner, Observer {
             renderView(it)
         })
-        //Restore data value after the orientation change
-        val valueRetained = savedInstanceState?.getString(EDIT_TEXT_VALUE_KEY)
-        if (!valueRetained.isNullOrEmpty()) viewModel.getUsersByName(valueRetained)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        //Saving edit text value after the orientation change
-        outState.putString(EDIT_TEXT_VALUE_KEY, et_main_screen_name.text.toString())
     }
 
     private fun setRecyclerView() {
@@ -68,20 +58,33 @@ class MainScreenFragment : Fragment() {
 
     private fun renderView(mainScreenStateView: MainScreenStateView) {
         when (mainScreenStateView) {
-            MainScreenStateView.ShowLoading -> pb_main_screen_loading.visibility = View.VISIBLE
-            MainScreenStateView.HideLoading -> pb_main_screen_loading.visibility = View.GONE
-            is MainScreenStateView.ShowData -> adapter.addUsers(mainScreenStateView.data)
+            MainScreenStateView.ShowLoading -> showProgressBar()
+            is MainScreenStateView.ShowData -> {
+                adapter.addUsers(mainScreenStateView.data)
+                hideProgressBar()
+            }
             MainScreenStateView.ShowError -> {
-                Toast.makeText(context, getString(R.string.error_message), Toast.LENGTH_SHORT)
-                    .show()
+                showMessage(R.string.error_message)
                 adapter.clearUsers()
             }
             MainScreenStateView.ShowEmptyResult -> {
-                Toast.makeText(context, getString(R.string.empty_message), Toast.LENGTH_SHORT)
-                    .show()
+                showMessage(R.string.empty_message)
                 adapter.clearUsers()
             }
+            MainScreenStateView.HideLoading -> hideProgressBar()
         }
+    }
+
+    private fun showMessage(messageTextRes: Int) {
+        Toast.makeText(context, getString(messageTextRes), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showProgressBar() {
+        pb_main_screen_loading.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        pb_main_screen_loading.visibility = View.GONE
     }
 
     private fun dismissKeyboard() {
@@ -94,7 +97,6 @@ class MainScreenFragment : Fragment() {
 
     companion object {
         const val TAG_MAIN_SCREEN_FRAGMENT = "mainScreenFragment"
-        private const val EDIT_TEXT_VALUE_KEY = "editTextValueKey"
         fun newInstance(bundle: Bundle? = null): MainScreenFragment {
             val transactionsListFragment = MainScreenFragment()
             if (bundle != null) {
