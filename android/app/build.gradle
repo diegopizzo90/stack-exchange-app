@@ -6,6 +6,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.stackexchangeapp"
         minSdkVersion 19
@@ -66,10 +71,10 @@ dependencies {
 
     testImplementation 'junit:junit:4.13'
     testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation 'org.mockito:mockito-core:2.11.0'
+    testImplementation 'org.mockito:mockito-core:3.3.3'
     //https://github.com/andrzejchm/RESTMock
     testImplementation "com.github.andrzejchm.RESTMock:android:0.4.2"
-    androidTestImplementation "org.mockito:mockito-android:2.11.0"
+    androidTestImplementation "org.mockito:mockito-android:3.3.3"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
