@@ -8,10 +8,11 @@ import io.reactivex.Single
 
 interface IStackExchangeInteractor {
 
-    fun getUsers(
+    fun getUsersByName(
         page: Int = StackExchangeService.PAGE,
         pageSize: Int = StackExchangeService.PAGE_SIZE,
         orderBy: OrderByValue = OrderByValue.ASC,
-        sortBy: SortByValue = SortByValue.NAME
+        sortBy: SortByValue = SortByValue.NAME,
+        name: String
     ): Single<List<UserView>>
 }

@@ -9,15 +9,15 @@ interface StackExchangeService {
 
     companion object {
         private const val VERSION = "2.2"
-        private const val BASE_URL_PATH = "https://api.stackexchange.com/"
-        const val USERS_PATH = "/users"
+        private const val BASE_URL_PATH = "https://api.stackexchange.com"
+        const val USERS_PATH = "users"
         const val PAGE = 1
         const val PAGE_SIZE = 20
         const val SITE_NAME = "stackoverflow"
 
         //I created this method to pass the version as parameter in order to have a way to change it dynamically
         fun createBaseURL(version: String = VERSION): String {
-            return "${BASE_URL_PATH}${version}"
+            return "${BASE_URL_PATH}/${version}/"
         }
     }
 
@@ -27,7 +27,8 @@ interface StackExchangeService {
         @Query("pagesize") pageSize: Int,
         @Query("order") orderBy: String,
         @Query("sort") sortBy: String,
-        @Query("site") siteName: String = SITE_NAME
+        @Query("site") siteName: String = SITE_NAME,
+        @Query("inname") nameQuery: String
     ): Single<UsersResponse>
 }
 

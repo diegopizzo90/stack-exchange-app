@@ -10,13 +10,14 @@ import io.reactivex.Single
 class StackExchangeInteractor(private val service: StackExchangeService) :
     IStackExchangeInteractor {
 
-    override fun getUsers(
+    override fun getUsersByName(
         page: Int,
         pageSize: Int,
         orderBy: OrderByValue,
-        sortBy: SortByValue
+        sortBy: SortByValue,
+        name: String
     ): Single<List<UserView>> {
-        return service.getUsers(page, pageSize, orderBy.value, sortBy.value)
+        return service.getUsers(page, pageSize, orderBy.value, sortBy.value, nameQuery = name)
             .map { StackExchangeCreator.fromModelToDataViewModel(it) }
     }
 }

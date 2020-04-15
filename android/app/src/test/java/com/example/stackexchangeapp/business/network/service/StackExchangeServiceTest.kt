@@ -46,7 +46,8 @@ class StackExchangeServiceTest {
             PAGE_SIZE,
             OrderByValue.ASC.value,
             SortByValue.NAME.value,
-            SITE_NAME
+            SITE_NAME,
+            "username"
         ).test().assertComplete()
         //assert
         resultResponse.assertValue { it == responseModel }
