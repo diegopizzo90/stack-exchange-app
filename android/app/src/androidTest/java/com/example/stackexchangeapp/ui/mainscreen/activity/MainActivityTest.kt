@@ -11,6 +11,7 @@ import com.example.stackexchangeapp.business.dataviewmodel.UserView
 import com.example.stackexchangeapp.business.interactor.IStackExchangeInteractor
 import com.example.stackexchangeapp.ui.mainscreen.viewmodel.MainScreenViewModel
 import io.reactivex.Single
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -23,6 +24,7 @@ import org.koin.dsl.module
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
+import java.util.concurrent.TimeUnit
 
 @RunWith(MockitoJUnitRunner::class)
 class MainActivityTest {
@@ -78,15 +80,23 @@ class MainActivityTest {
 
     @Test
     fun mainScreenActivityStarted_editTextValueChanged_resultsShown() {
-        `when`(interactor.getUsersByName(name = STRING_TO_TYPE)).thenReturn(Single.just(results))
+        `when`(interactor.getUsersByName(name = STRING_TO_TYPE)).thenReturn(
+            Single.just(results).delay(500, TimeUnit.MILLISECONDS)
+        )
         mainScreenActivityStarted_typeOnEditText_editTextValueChanged()
         // Click on the search button
         onView(withId(R.id.bt_main_screen_search)).perform(click())
+        // Check if the progress bar is displayed
+        onView(withId(R.id.pb_main_screen_loading)).check(matches(isDisplayed()))
+        //Wait for it
+        Thread.sleep(500)
         // Check if the results are displayed
         onView(withText(REPUTATION1)).check(matches(isDisplayed()))
         onView(withText(USERNAME1)).check(matches(isDisplayed()))
         onView(withText(REPUTATION2)).check(matches(isDisplayed()))
         onView(withText(USERNAME2)).check(matches(isDisplayed()))
+        // Check if the progress bar is gone
+        onView(withId(R.id.pb_main_screen_loading)).check(matches(not(isDisplayed())))
     }
 
     @After
