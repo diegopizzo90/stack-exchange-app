@@ -65,6 +65,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     testImplementation 'junit:junit:4.13'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation 'org.mockito:mockito-core:2.11.0'
     //https://github.com/andrzejchm/RESTMock
     testImplementation "com.github.andrzejchm.RESTMock:android:0.4.2"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
