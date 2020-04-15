@@ -69,6 +69,10 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.11.0'
     //https://github.com/andrzejchm/RESTMock
     testImplementation "com.github.andrzejchm.RESTMock:android:0.4.2"
+    androidTestImplementation "org.mockito:mockito-android:2.11.0"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+    // Koin for tests
+    androidTestImplementation("org.koin:koin-test:2.0.1") { exclude group: 'org.mockito' }
 }
