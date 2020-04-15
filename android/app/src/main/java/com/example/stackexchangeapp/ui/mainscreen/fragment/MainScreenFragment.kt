@@ -43,6 +43,15 @@ class MainScreenFragment : Fragment() {
         viewModel.mainScreenState.observe(viewLifecycleOwner, Observer {
             renderView(it)
         })
+        //Restore data value after the orientation change
+        val valueRetained = savedInstanceState?.getString(EDIT_TEXT_VALUE_KEY)
+        if (!valueRetained.isNullOrEmpty()) viewModel.getUsersByName(valueRetained)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        //Saving edit text value after the orientation change
+        outState.putString(EDIT_TEXT_VALUE_KEY, et_main_screen_name.text.toString())
     }
 
     private fun setRecyclerView() {
@@ -85,6 +94,7 @@ class MainScreenFragment : Fragment() {
 
     companion object {
         const val TAG_MAIN_SCREEN_FRAGMENT = "mainScreenFragment"
+        private const val EDIT_TEXT_VALUE_KEY = "editTextValueKey"
         fun newInstance(bundle: Bundle? = null): MainScreenFragment {
             val transactionsListFragment = MainScreenFragment()
             if (bundle != null) {
