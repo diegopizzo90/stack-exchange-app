@@ -17,6 +17,17 @@ class MainScreenViewModel(private val interactor: IStackExchangeInteractor) : Vi
     private val disposables = CompositeDisposable()
 
     fun getUsersByName(nameToSearch: String) {
+        when {
+            nameToSearch.isEmpty() -> {
+                mainScreenStateMutable.value = MainScreenStateView.UsernameEmpty
+            }
+            else -> {
+                retrieveUsersByName(nameToSearch)
+            }
+        }
+    }
+
+    private fun retrieveUsersByName(nameToSearch: String) {
         disposables.add(interactor.getUsersByName(name = nameToSearch)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

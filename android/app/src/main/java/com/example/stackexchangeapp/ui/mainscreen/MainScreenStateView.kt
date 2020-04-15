@@ -8,4 +8,5 @@ sealed class MainScreenStateView {
     class ShowData(val data: List<UserView>) : MainScreenStateView()
     object ShowError : MainScreenStateView()
     object ShowEmptyResult : MainScreenStateView()
+    object UsernameEmpty : MainScreenStateView()
 }

@@ -72,6 +72,10 @@ class MainScreenFragment : Fragment() {
                 adapter.clearUsers()
             }
             MainScreenStateView.HideLoading -> hideProgressBar()
+            MainScreenStateView.UsernameEmpty -> {
+                showMessage(R.string.empty_field_message)
+                adapter.clearUsers()
+            }
         }
     }
 
