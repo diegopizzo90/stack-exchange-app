@@ -1,7 +1,5 @@
 package com.example.stackexchangeapp.business.dataviewmodel
 
-import java.util.*
-
 data class UserDetailsView(
     val imageUrl: String,
     val userName: String,
@@ -11,5 +9,5 @@ data class UserDetailsView(
     val badgesGold: String,
     val location: String?,
     val age: String?,
-    val creationDate: Date
+    val creationDate: String
 )
