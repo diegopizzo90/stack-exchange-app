@@ -91,8 +91,8 @@ class MainScreenViewModelTest {
 
     companion object {
         private val userList = listOf(
-            UserView("12", "username1"),
-            UserView("22", "username2")
+            UserView(1233, "12", "username1"),
+            UserView(33231, "22", "username2")
         )
     }
 }

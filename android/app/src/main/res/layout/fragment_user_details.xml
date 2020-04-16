@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/profile_image"
+            app:layout_constraintBottom_toTopOf="@+id/tv_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_reputation_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile_image"
+            tools:text="Username" />
+
+        <TextView
+            android:id="@+id/tv_reputation_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/reputation_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bronze_badge_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_reputation"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_reputation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bronze_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_reputation_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username"
+            tools:text="333" />
+
+        <TextView
+            android:id="@+id/tv_bronze_badge_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/bronze_badge_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_silver_badge_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bronze_badge"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reputation_label" />
+
+        <TextView
+            android:id="@+id/tv_bronze_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_silver_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_bronze_badge_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reputation"
+            tools:text="23" />
+
+        <TextView
+            android:id="@+id/tv_silver_badge_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/silver_badge_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_gold_badge_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_silver_badge"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bronze_badge_label" />
+
+        <TextView
+            android:id="@+id/tv_silver_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_gold_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_silver_badge_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bronze_badge"
+            tools:text="45" />
+
+        <TextView
+            android:id="@+id/tv_gold_badge_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/gold_badge_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_location_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_gold_badge"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_silver_badge_label" />
+
+        <TextView
+            android:id="@+id/tv_gold_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_gold_badge_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_silver_badge"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tv_location_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="@string/location_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_age_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_location"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_gold_badge_label" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_age"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_location_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_gold_badge"
+            tools:text="Rome" />
+
+        <TextView
+            android:id="@+id/tv_age_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/age_label"
+            app:layout_constraintBottom_toTopOf="@+id/tv_creation_date_label"
+            app:layout_constraintEnd_toStartOf="@+id/tv_age"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location_label" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/tv_creation_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_age_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/tv_creation_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@string/creation_date_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_creation_date"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_age_label" />
+
+        <TextView
+            android:id="@+id/tv_creation_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_creation_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_age"
+            tools:text="2018-08-20'T'13:20:10" />
+
+        <ProgressBar
+            android:id="@+id/pb_user_details"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

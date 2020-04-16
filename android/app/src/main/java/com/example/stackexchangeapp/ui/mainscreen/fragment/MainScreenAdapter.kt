@@ -10,7 +10,8 @@ import com.example.stackexchangeapp.R
 import com.example.stackexchangeapp.business.dataviewmodel.UserView
 import kotlinx.android.synthetic.main.item_main_screen_user.view.*
 
-class MainScreenAdapter : RecyclerView.Adapter<MainScreenAdapter.ViewHolder>() {
+class MainScreenAdapter(private val listener: OnUserClickListener) :
+    RecyclerView.Adapter<MainScreenAdapter.ViewHolder>() {
 
     private val userList: MutableList<UserView> = mutableListOf()
 
@@ -27,6 +28,7 @@ class MainScreenAdapter : RecyclerView.Adapter<MainScreenAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = userList[position]
+        holder.setOnClickListener(user.id)
         holder.reputationTextView.text = user.reputation
         holder.userNameTextView.text = user.userName
     }
@@ -43,7 +45,17 @@ class MainScreenAdapter : RecyclerView.Adapter<MainScreenAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val reputationTextView: TextView = itemView.tv_main_screen_reputation
-        val userNameTextView: TextView = itemView.tv_main_screen_username
+        val reputationTextView: TextView = itemView.tv_main_screen_item_reputation
+        val userNameTextView: TextView = itemView.tv_main_screen_item_username
+
+        fun setOnClickListener(userId: Int) {
+            itemView.setOnClickListener {
+                listener.onUserClick(userId)
+            }
+        }
+    }
+
+    interface OnUserClickListener {
+        fun onUserClick(userId: Int)
     }
 }

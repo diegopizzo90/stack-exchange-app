@@ -20,10 +20,15 @@ class MainScreenFragment : Fragment() {
 
     private val viewModel: MainScreenViewModel by viewModel()
     private lateinit var adapter: MainScreenAdapter
+    private var onFragmentInteractionListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = MainScreenAdapter()
+        adapter = MainScreenAdapter(object : MainScreenAdapter.OnUserClickListener {
+            override fun onUserClick(userId: Int) {
+                onFragmentInteractionListener?.onFragmentInteraction(userId)
+            }
+        })
     }
 
     override fun onCreateView(
@@ -42,6 +47,11 @@ class MainScreenFragment : Fragment() {
         viewModel.mainScreenState.observe(viewLifecycleOwner, Observer {
             renderView(it)
         })
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onFragmentInteractionListener = activity as OnFragmentInteractionListener
     }
 
     private fun setRecyclerView() {
@@ -102,11 +112,15 @@ class MainScreenFragment : Fragment() {
     companion object {
         const val TAG_MAIN_SCREEN_FRAGMENT = "mainScreenFragment"
         fun newInstance(bundle: Bundle? = null): MainScreenFragment {
-            val transactionsListFragment = MainScreenFragment()
+            val mainScreenFragment = MainScreenFragment()
             if (bundle != null) {
-                transactionsListFragment.arguments = bundle
+                mainScreenFragment.arguments = bundle
             }
-            return transactionsListFragment
+            return mainScreenFragment
         }
+    }
+
+    interface OnFragmentInteractionListener {
+        fun onFragmentInteraction(userId: Int)
     }
 }
