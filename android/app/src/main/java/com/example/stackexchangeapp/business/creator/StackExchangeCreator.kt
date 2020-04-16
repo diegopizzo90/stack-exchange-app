@@ -4,6 +4,7 @@ import com.example.stackexchangeapp.business.dataviewmodel.UserDetailsView
 import com.example.stackexchangeapp.business.dataviewmodel.UserView
 import com.example.stackexchangeapp.business.network.model.UserDetailsResponse
 import com.example.stackexchangeapp.business.network.model.UsersResponse
+import java.util.*
 
 object StackExchangeCreator {
     fun fromModelToDataViewModel(usersResponse: UsersResponse): List<UserView> {
@@ -19,9 +20,9 @@ object StackExchangeCreator {
             userDetails.badges.bronze.toString(),
             userDetails.badges.silver.toString(),
             userDetails.badges.gold.toString(),
-            userDetails.location,
-            userDetails.age.toString(),
-            userDetails.creationDate
+            userDetails.location ?: "",
+            if (userDetails.age == null) "" else userDetails.age.toString(),
+            Date(userDetails.creationDate).toString()
         )
     }
 }
