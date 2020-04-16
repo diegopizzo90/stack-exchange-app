@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Stack Exchange App</string>
+    <string name="button_text">Search</string>
+    <string name="type_an_username_hint">Type an username</string>
+    <string name="error_message">There was a problem, try again</string>
+    <string name="empty_message">No results found</string>
+    <string name="empty_field_message">The username field is mandatory</string>
+    <string name="profile_image">profile_image</string>
+    <string name="reputation_label">Reputation:</string>
+    <string name="bronze_badge_label">Bronze badge:</string>
+    <string name="silver_badge_label">Silver badge:</string>
+    <string name="gold_badge_label">Gold badge:</string>
+    <string name="location_label">Location:</string>
+    <string name="age_label">Age:</string>
+    <string name="creation_date_label">Creation date:</string>
 </resources>
