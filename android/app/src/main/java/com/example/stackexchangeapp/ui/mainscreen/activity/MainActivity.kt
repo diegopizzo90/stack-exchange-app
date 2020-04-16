@@ -1,9 +1,11 @@
 package com.example.stackexchangeapp.ui.mainscreen.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stackexchangeapp.R
 import com.example.stackexchangeapp.ui.mainscreen.fragment.MainScreenFragment
+import com.example.stackexchangeapp.ui.userdetails.activity.UserDetailsActivity
 
 class MainActivity : AppCompatActivity(), MainScreenFragment.OnFragmentInteractionListener {
 
@@ -27,6 +29,13 @@ class MainActivity : AppCompatActivity(), MainScreenFragment.OnFragmentInteracti
     }
 
     override fun onFragmentInteraction(userId: Int) {
-        //start new activity
+        val intent = Intent(this, UserDetailsActivity::class.java).apply {
+            putExtra(USER_ID_INTENT_KEY, userId)
+        }
+        startActivity(intent)
+    }
+    
+    companion object {
+        const val USER_ID_INTENT_KEY = "userId"
     }
 }
