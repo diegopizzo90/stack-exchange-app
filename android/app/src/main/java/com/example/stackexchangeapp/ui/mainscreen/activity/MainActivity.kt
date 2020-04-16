@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.stackexchangeapp.R
 import com.example.stackexchangeapp.ui.mainscreen.fragment.MainScreenFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainScreenFragment.OnFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
                 MainScreenFragment.TAG_MAIN_SCREEN_FRAGMENT
             ).commit()
         }
+    }
+
+    override fun onFragmentInteraction(userId: Int) {
+        //start new activity
     }
 }
