@@ -5,6 +5,6 @@ import com.example.stackexchangeapp.business.network.model.UsersResponse
 
 object StackExchangeCreator {
     fun fromModelToDataViewModel(usersResponse: UsersResponse): List<UserView> {
-        return usersResponse.items.map { UserView(it.reputation.toString(), it.userName) }
+        return usersResponse.items.map { UserView(it.id, it.reputation.toString(), it.userName) }
     }
 }

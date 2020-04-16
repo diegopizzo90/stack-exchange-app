@@ -60,6 +60,6 @@ class StackExchangeServiceTest {
 
     companion object {
         private const val RESPONSE_FILE_PATH = "api-response/response.json"
-        private val responseModel = UsersResponse(listOf(User(11, "Agra")))
+        private val responseModel = UsersResponse(listOf(User(9124799, 11, "Agra")))
     }
 }

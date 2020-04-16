@@ -20,14 +20,14 @@ class StackExchangeCreatorTest {
     companion object {
         private val responseModel = UsersResponse(
             listOf(
-                User(12, "username1"),
-                User(22, "username2")
+                User(1233, 12, "username1"),
+                User(33231, 22, "username2")
             )
         )
 
         private val dataViewModel = listOf(
-            UserView("12", "username1"),
-            UserView("22", "username2")
+            UserView(1233, "12", "username1"),
+            UserView(33231, "22", "username2")
         )
     }
 }
