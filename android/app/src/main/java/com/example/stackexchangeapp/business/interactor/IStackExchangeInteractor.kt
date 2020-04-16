@@ -1,5 +1,6 @@
 package com.example.stackexchangeapp.business.interactor
 
+import com.example.stackexchangeapp.business.dataviewmodel.UserDetailsView
 import com.example.stackexchangeapp.business.dataviewmodel.UserView
 import com.example.stackexchangeapp.business.network.service.OrderByValue
 import com.example.stackexchangeapp.business.network.service.SortByValue
@@ -15,4 +16,6 @@ interface IStackExchangeInteractor {
         sortBy: SortByValue = SortByValue.NAME,
         name: String
     ): Single<List<UserView>>
+
+    fun getUserDetailsById(userId: Int): Single<List<UserDetailsView>>
 }
