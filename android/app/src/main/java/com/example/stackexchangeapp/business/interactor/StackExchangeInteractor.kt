@@ -22,7 +22,7 @@ class StackExchangeInteractor(private val service: StackExchangeService) :
             .map { StackExchangeCreator.fromModelToDataViewModel(it) }
     }
 
-    override fun getUserDetailsById(userId: Int): Single<List<UserDetailsView>> {
+    override fun getUserDetailsById(userId: Int): Single<UserDetailsView> {
         return service.getUser(userId).map { StackExchangeCreator.fromModelToDataViewModel(it) }
     }
 }

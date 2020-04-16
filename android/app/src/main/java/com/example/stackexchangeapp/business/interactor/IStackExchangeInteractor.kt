@@ -17,5 +17,5 @@ interface IStackExchangeInteractor {
         name: String
     ): Single<List<UserView>>
 
-    fun getUserDetailsById(userId: Int): Single<List<UserDetailsView>>
+    fun getUserDetailsById(userId: Int): Single<UserDetailsView>
 }

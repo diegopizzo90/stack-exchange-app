@@ -10,19 +10,18 @@ object StackExchangeCreator {
         return usersResponse.items.map { UserView(it.id, it.reputation.toString(), it.userName) }
     }
 
-    fun fromModelToDataViewModel(userDetailsResponse: UserDetailsResponse): List<UserDetailsView> {
-        return userDetailsResponse.items.map {
-            UserDetailsView(
-                it.imageUrl,
-                it.userName,
-                it.reputation,
-                it.badges.bronze.toString(),
-                it.badges.silver.toString(),
-                it.badges.gold.toString(),
-                it.location,
-                it.age.toString(),
-                it.creationDate
-            )
-        }
+    fun fromModelToDataViewModel(userDetailsResponse: UserDetailsResponse): UserDetailsView {
+        val userDetails = userDetailsResponse.items.first()
+        return UserDetailsView(
+            userDetails.imageUrl,
+            userDetails.userName,
+            userDetails.reputation,
+            userDetails.badges.bronze.toString(),
+            userDetails.badges.silver.toString(),
+            userDetails.badges.gold.toString(),
+            userDetails.location,
+            userDetails.age.toString(),
+            userDetails.creationDate
+        )
     }
 }
