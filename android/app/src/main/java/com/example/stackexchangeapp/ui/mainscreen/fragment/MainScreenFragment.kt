@@ -112,11 +112,11 @@ class MainScreenFragment : Fragment() {
     companion object {
         const val TAG_MAIN_SCREEN_FRAGMENT = "mainScreenFragment"
         fun newInstance(bundle: Bundle? = null): MainScreenFragment {
-            val transactionsListFragment = MainScreenFragment()
+            val mainScreenFragment = MainScreenFragment()
             if (bundle != null) {
-                transactionsListFragment.arguments = bundle
+                mainScreenFragment.arguments = bundle
             }
-            return transactionsListFragment
+            return mainScreenFragment
         }
     }
 
