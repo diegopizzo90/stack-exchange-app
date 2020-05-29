@@ -10,7 +10,6 @@ import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -80,15 +79,6 @@ class MainScreenViewModelTest {
         Mockito.verify(observer).onChanged(MainScreenStateView.ShowLoading)
         Mockito.verify(observer).onChanged(MainScreenStateView.ShowEmptyResult)
         Mockito.verify(observer).onChanged(MainScreenStateView.HideLoading)
-    }
-
-    @Test
-    @Ignore
-    fun getUsersByName_usernameEmpty_emptyUsernameViewStateTriggered() {
-        //act
-        viewModel.getUsersByName("")
-        //assert
-        Mockito.verify(observer).onChanged(MainScreenStateView.UsernameEmpty)
     }
 
     companion object {
