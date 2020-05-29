@@ -81,14 +81,6 @@ class MainScreenViewModelTest {
         Mockito.verify(observer).onChanged(MainScreenStateView.HideLoading)
     }
 
-    @Test
-    fun getUsersByName_usernameEmpty_emptyUsernameViewStateTriggered() {
-        //act
-        viewModel.getUsersByName("")
-        //assert
-        Mockito.verify(observer).onChanged(MainScreenStateView.UsernameEmpty)
-    }
-
     companion object {
         private val userList = listOf(
             UserView(1233, "12", "username1"),
